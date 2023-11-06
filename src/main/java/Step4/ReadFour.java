@@ -1,5 +1,6 @@
 package Step4;
 
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
@@ -16,11 +17,17 @@ public class ReadFour
             // values in the input file.
             try {
                 Scanner scanner = new Scanner(new File("src/main/java/Step4/input.txt"));
-
+                int runningTotal = 0;
+                PrintWriter fileOut = new PrintWriter("RunningTotal.txt");
                 while(scanner.hasNext()){
-                    String[] lineIn = scanner.nextLine();
+                    String lineIn = scanner.nextLine();
+                    runningTotal += Integer.parseInt(lineIn);
+                    fileOut.println("Running total = " + runningTotal);
+
 
                 }
+
+                fileOut.close();
 
             }
             catch(IOException e){
